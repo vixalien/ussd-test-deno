@@ -1,16 +1,14 @@
-# Fresh project
+# USSD Test Deno
 
-Your new Fresh project is ready to go. You can follow the Fresh "Getting
-Started" guide here: https://fresh.deno.dev/docs/getting-started
+This is a simple app that tests your USSD endpoints. Built with Deno.
 
-### Usage
+## Running
 
-Make sure to install Deno: https://deno.land/manual/getting_started/installation
+1. Install [Deno](https://deno.land/getting_started/installation)
+2. Clone this repo
+3. Run `deno task start` to start the server
+4. Visit `http://localhost:8000` and start testing your USSDs
 
-Then start the project:
+## Licence
 
-```
-deno task start
-```
-
-This will watch the project directory and restart as necessary.
+MIT
