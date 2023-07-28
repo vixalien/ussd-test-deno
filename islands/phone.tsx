@@ -131,7 +131,7 @@ export function Phone() {
   }
 
   return (
-    <div>
+    <div className="w-full">
       <br />
       <Input label="Phone Number" signal={phone} />
       <Input label="Callback URL" signal={cb} />
