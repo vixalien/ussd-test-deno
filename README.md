@@ -2,7 +2,15 @@
 
 This is a simple app that tests your USSD endpoints. Built with Deno.
 
-## Running
+## Usage
+
+### Hosted version
+
+There is a hosted version of this app at
+[ussd-test-deno.deno.dev](https://ussd-test-deno.deno.dev) but you will probably
+want to run it locally because of CORS issues.
+
+### Running locally
 
 1. Install [Deno](https://deno.land/getting_started/installation)
 2. Clone this repo
