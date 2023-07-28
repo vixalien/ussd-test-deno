@@ -1,0 +1,88 @@
+.key-button {
+  border: 1px solid #666;
+  background-color: #1a461a;
+  padding: 10px 35px;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.key-button:hover {
+  background-color: #444
+}
+
+.key-button:active {
+  background-color: #666;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.input {
+  margin-bottom: 10px;
+}
+
+.input>input {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 6px;
+  border: 1px solid #666;
+}
+
+.dialog {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  min-width: 300px;
+  min-height: 100px;
+  border-radius: 12px;
+  box-shadow: 10px 10px 40px 0px #99999970;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dialog::backdrop {
+  background-color: #1c273196;
+}
+
+.dialog[open] {
+  display: flex;
+}
+
+.dialog-content {
+  flex: 1;
+}
+
+.dialog-buttons {
+  display: flex;
+  align-self: flex-end;
+  gap: 12px;
+}
+
+.dialog-button {
+  padding: 5px 15px;
+  background-color: #c4e1fb;
+  color: #333;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.dialog-input {
+  width: 100%;
+  background-color: aliceblue;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 2px solid #80bad0;
+}
+
+.dialog-button:hover {
+  background-color: #a4d1fb;
+}
