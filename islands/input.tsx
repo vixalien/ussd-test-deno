@@ -1,6 +1,6 @@
 import { Signal } from "@preact/signals";
 
-export interface InputProps {
+export interface InputProps extends Record<string, unknown> {
   label: string;
   signal: Signal;
 }

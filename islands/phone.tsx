@@ -7,9 +7,9 @@ const dialog_props = signal<DialogProps>({
   open: false,
 });
 
-const phone = signal("");
-const cb = signal("");
-const code = signal("");
+const phone = signal("+250788666655");
+const cb = signal("http://localhost:3000");
+const code = signal("49035");
 
 const saved_input = signal("");
 
@@ -86,6 +86,8 @@ export function Phone() {
         buttons: dialog_buttons.both,
         showInput: true,
         onAction: (action, input) => {
+          console.log("action", action);
+
           if (action === "ok") {
             if (input) {
               if (saved_input.value.length !== 0) saved_input.value += "*";
@@ -133,9 +135,9 @@ export function Phone() {
   return (
     <div className="w-full">
       <br />
-      <Input label="Phone Number" signal={phone} />
-      <Input label="Callback URL" signal={cb} />
-      <Input label="Service Code" signal={code} />
+      <Input label="Phone Number" name="phone" type="tel" signal={phone} />
+      <Input label="Callback URL" name="cb" signal={cb} />
+      <Input label="Service Code" name="code" signal={code} />
       {/* a feature phone-like UI */}
       <div class="button">
         <Button
@@ -145,10 +147,18 @@ export function Phone() {
       </div>
       <Dialog
         {...dialog_props.value}
-        onAction={(action) => {
-          dialog_props.value = {
-            open: false,
-          };
+        onAction={(action, input) => {
+
+          if (action === "ok" && dialog_props.value.showInput) {
+            if (input) {
+              if (saved_input.value.length !== 0) saved_input.value += "*";
+              saved_input.value += input;
+            }
+
+            makeRequest();
+          } else {
+            cancelSession();
+          }
         }}
       />
     </div>

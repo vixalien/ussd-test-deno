@@ -59,6 +59,7 @@
 
 .dialog-content {
   flex: 1;
+  white-space: pre-wrap;
 }
 
 .dialog-buttons {
@@ -75,7 +76,7 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.dialog-input {
+.dialog-input>input {
   width: 100%;
   background-color: aliceblue;
   padding: 5px 10px;

@@ -36,7 +36,10 @@ export default function Dialog(props: DialogProps) {
         {Object.entries(props.buttons ?? {}).map(([id, text]) => (
           <button
             className="dialog-button"
-            onClick={() => props.onAction?.(id, input_ref.current?.value ?? "")}
+            onClick={() => {
+              console.log("rpops", props);
+              props.onAction?.(id, input_ref.current?.value ?? "");
+            }}
           >
             {text}
           </button>
