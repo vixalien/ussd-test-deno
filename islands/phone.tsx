@@ -1,4 +1,5 @@
 import { signal } from "@preact/signals";
+import { useEffect } from "preact/hooks";
 import Dialog, { DialogProps } from "./dialog.tsx";
 import Input from "./input.tsx";
 import Button from "./button.tsx";
@@ -10,10 +11,15 @@ const dialog_props = signal<DialogProps>({
 const phone = signal("+250788666655");
 const cb = signal("http://localhost:3001");
 const code = signal("49035");
+const sessionId = signal(Math.floor(Math.random() * 100000000).toString());
 
 const saved_input = signal("");
 
 export function Phone() {
+  function resetSession() {
+    sessionId.value = Math.floor(Math.random() * 100000000).toString();
+  }
+
   const dialog_buttons = {
     both: {
       "cancel": "Cancel",
@@ -49,10 +55,7 @@ export function Phone() {
 
     const params = new URLSearchParams();
     params.append("phoneNumber", phone.value);
-    params.append(
-      "sessionId",
-      Math.floor(Math.random() * 100000000).toString(),
-    );
+    params.append("sessionId", sessionId.value);
     params.append("serviceCode", code.value);
     params.append("text", saved_input.value);
 
@@ -72,6 +75,8 @@ export function Phone() {
   }
 
   function cancelSession() {
+    resetSession();
+
     saved_input.value = "";
     dialog_props.value = {
       open: false,
@@ -148,7 +153,6 @@ export function Phone() {
       <Dialog
         {...dialog_props.value}
         onAction={(action, input) => {
-
           if (action === "ok" && dialog_props.value.showInput) {
             if (input) {
               if (saved_input.value.length !== 0) saved_input.value += "*";
