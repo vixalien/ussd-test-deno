@@ -8,7 +8,7 @@ const dialog_props = signal<DialogProps>({
 });
 
 const phone = signal("+250788666655");
-const cb = signal("http://localhost:3000");
+const cb = signal("http://localhost:3001");
 const code = signal("49035");
 
 const saved_input = signal("");
