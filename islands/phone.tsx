@@ -68,7 +68,7 @@ export function Phone() {
           throw new Error(res.statusText);
         }
 
-        parseReturnedSession(await res.text());
+        parseReturnedSession(res.headers, await res.text());
       }).catch((err) => {
         showError(err.message);
       });
@@ -83,11 +83,11 @@ export function Phone() {
     };
   }
 
-  function parseReturnedSession(res: string) {
-    if (res.startsWith("CON ")) {
+  function parseReturnedSession(headers: Headers, res: string) {
+    if (headers.get("freeflow") == "FC") {
       dialog_props.value = {
         open: true,
-        content: res.substring(4),
+        content: res,
         buttons: dialog_buttons.both,
         showInput: true,
         onAction: (action, input) => {
@@ -105,10 +105,10 @@ export function Phone() {
           }
         },
       };
-    } else if (res.startsWith("END ")) {
+    } else if (headers.get("freeflow") == "FB") {
       dialog_props.value = {
         open: true,
-        content: res.substring(4),
+        content: res,
         buttons: dialog_buttons.ok,
         onAction: (action) => {
           dialog_props.value = {
