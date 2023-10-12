@@ -37,7 +37,7 @@ export default function Dialog(props: DialogProps) {
           <button
             className="dialog-button"
             onClick={() => {
-              console.log("rpops", props);
+              // console.log("rpops", props);
               props.onAction?.(id, input_ref.current?.value ?? "");
             }}
           >
