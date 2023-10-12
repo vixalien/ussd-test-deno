@@ -13,7 +13,7 @@ const cb = signal("http://localhost:3001");
 const code = signal("49035");
 const sessionId = signal(Math.floor(Math.random() * 100000000).toString());
 
-const saved_input = signal("");
+const saved_input = signal("950");
 
 export function Phone() {
   function resetSession() {
@@ -77,7 +77,7 @@ export function Phone() {
   function cancelSession() {
     resetSession();
 
-    saved_input.value = "";
+    saved_input.value = "950";
     dialog_props.value = {
       open: false,
     };
@@ -94,10 +94,11 @@ export function Phone() {
           console.log("action", action);
 
           if (action === "ok") {
-            if (input) {
-              if (saved_input.value.length !== 0) saved_input.value += "*";
-              saved_input.value += input;
-            }
+            saved_input.value = input;
+            // if (input) {
+            //   if (saved_input.value.length !== 0) saved_input.value += "*";
+            //   saved_input.value += input;
+            // }
 
             makeRequest();
           } else {
@@ -154,10 +155,11 @@ export function Phone() {
         {...dialog_props.value}
         onAction={(action, input) => {
           if (action === "ok" && dialog_props.value.showInput) {
-            if (input) {
-              if (saved_input.value.length !== 0) saved_input.value += "*";
-              saved_input.value += input;
-            }
+            saved_input.value = input;
+            // if (input) {
+            //   if (saved_input.value.length !== 0) saved_input.value += "*";
+            //   saved_input.value += input;
+            // }
 
             makeRequest();
           } else {
